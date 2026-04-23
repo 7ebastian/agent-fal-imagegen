@@ -1,98 +1,136 @@
 # Art Direction Preferences
 
-This is your living file. The skill reads it before every generation session to pick up your personal or brand-specific preferences — models you like, composition rules you follow, a palette you reach for, metaphors you trust. Fill it in as you go. A good first pass takes 10 minutes; a great version compounds over months.
+Your living art-direction file. The skill reads this before every generation session to pick up the preferences you've built up — models, palette, composition, visual vocabulary, the kinds of prompts that reliably produce work you're happy with.
 
-> **Note:** this template ships empty by design. Replace each section with your own.
+This file **ships empty on purpose**. The sections below are scaffolding. Fill them with your own taste, your own brand, your own conventions. A first pass takes 10 minutes; a mature version compounds over months of use. The emptier it starts, the more honestly your own judgment shapes the output.
 
----
-
-## Preferred Models
-
-Which fal.ai / xAI models do you reach for, and why? Examples of the kind of note that's useful here:
-
-- **Go-to for photorealistic hero images:** `fal-ai/nano-banana-2` — best realism out of the box
-- **Go-to for typography-heavy work:** `openai/gpt-image-2` — best Latin + CJK text rendering
-- **Go-to for design / illustration:** `fal-ai/recraft/v4/pro/text-to-image`
-- **Go-to for fast iterations:** `fal-ai/flux/schnell` or `fal-ai/z-image/turbo`
-- **Go-to for video:** `fal-ai/wan/v2.2-a14b/image-to-video` (high fidelity) or `fal-ai/ltx-2/image-to-video/fast` (speed)
+> Delete this intro block once you've started filling the file in. The scaffold is for the first few sessions; after that, it's your document.
 
 ---
 
-## Composition Rules
+## 1. Pre-flight direction-setting
 
-How do you want images framed by default?
+What do you want your agent to nail down *before* it writes a prompt? Common categories:
 
-- Aspect ratio: e.g. 16:9 for hero work, 1:1 for social, 9:16 for vertical video
-- Subject placement: e.g. right-half with left empty for text overlay
-- Empty-space rules: e.g. one flat color, never gradients or patterns
-- Camera traditions: e.g. 90° top-down for flat lay, 30–45° oblique for isometric
+- **Subject** — what single idea does this image need to communicate?
+- **Feeling** — name the emotion before the content.
+- **Tradition / visual lineage** — what school or body of work does this image belong to?
+- **Constraint** — what are you deliberately limiting (palette, element count, composition)?
 
----
-
-## Color Palette
-
-Name the colors you return to. Exact hex codes generate more reliably than descriptive names. A table works well:
-
-| Name | Background | Text/Caption |
-|------|-----------|-------------|
-| _e.g. Your Brand Dark_ | `#05060B` | `#FFFFFF` |
-| _e.g. Your Brand Warm_ | `#C89176` | `#05060B` |
+Replace the prompts above with your own checklist, or delete this section if you don't use one.
 
 ---
 
-## Image Lexicon (metaphors that work for you)
+## 2. Preferred models
 
-Over time, certain subjects reliably communicate the concepts you care about. Keep a running list so you (and the agent) don't re-discover them every session.
+Which fal.ai / xAI models do you reach for, and for what? Fill in as you settle on go-tos:
 
-| Subject | Concept |
-|---------|---------|
-| _e.g. Toy soldiers in triangular formation_ | _Coordinated agents, orchestration_ |
-| _e.g. Lobster claw intruding at corner_ | _Power partially revealed_ |
+- **Photorealistic hero work:** _your choice_
+- **Typography-heavy:** _your choice_
+- **Design / illustration:** _your choice_
+- **Fast iteration / draft:** _your choice_
+- **Video (high fidelity):** _your choice_
+- **Video (fast):** _your choice_
 
----
-
-## Visual Metaphor Mechanisms
-
-Pick one per concept when drafting prompts:
-
-- **Substitution** — Replace one element with another that shares a quality. The absent thing is felt.
-- **Fusion** — Merge two objects into a single hybrid. Both meanings coexist.
-- **Juxtaposition** — Unrelated things placed together. Proximity creates meaning.
-- **Tonal Dissonance** — Bright warm palette for dark topics. Mismatch > match.
-- **Impossible Physicality** — Photorealistic objects that cannot exist but feel inevitable.
-- **Material Contrast** — Soft/organic + mechanical/violent. Tension carries emotion.
-- **Scale Disruption** — Miniaturise something powerful beside a known-scale reference.
-- **Remove the Person** — Empty chair > portrait. Shoes > siblings. Let objects carry human weight.
+See `model-catalog.md` for what's currently on fal.ai and xAI.
 
 ---
 
-## Never Use
+## 3. Default composition rules
 
-What are the clichés you refuse to ship? Keep them here so the agent never drafts them:
+Your defaults for aspect ratio, subject placement, negative space, camera traditions. Examples of the *kind* of thing that belongs here:
 
-- _e.g. robots, brains, lightbulbs, gears, puzzle pieces, handshakes, stock-photo teams_
+- Default aspect ratio for hero / social / video
+- Where the subject sits in the frame
+- What the empty space is doing (flat colour? gradient? patterned?)
+- Camera angles you return to (top-down, oblique, corner intrusion, etc.)
 
----
-
-## The Test (run before generating)
-
-Questions to ask yourself before confirming a prompt:
-
-1. Does the subject carry a double meaning?
-2. Would you be proud to hang this in an office?
-3. Is the background in tension with the content?
-4. Can you name the absent thing?
-5. Does it work without a caption?
+Fill as you develop defaults.
 
 ---
 
-## Critical Prompt Rules
+## 4. Colour palette
 
-- **No text baked into images** — if you use HTML/CSS overlays for captions, every prompt should end with: *"No text, no labels, no captions, no typographic elements of any kind."*
-- **Never describe data meaning in prompts** — don't write *"junior roles declined 13%"*. Describe the physical objects; the model otherwise interprets conceptual language as text to render.
-- **Specify exact hex codes** — `"seamless flat dark olive-green surface (#3D491D)"` hits the right colour reliably.
-- **Specify dimensions for miniatures** — `"each approximately 15mm tall"` gives the model a concrete scale reference.
-- **Rendering default:** photorealistic. Fine surface texture, authentic wear and patina. No illustration, no low-poly, no CGI-toy look (unless that's the brief).
+Name the colours you return to. Exact hex codes generate more reliably than descriptive names.
+
+| Name | Background | Text / Caption | Notes |
+|------|-----------|---------------|-------|
+|      |           |               |       |
+
+---
+
+## 5. Visual metaphor mechanisms
+
+The moves you use to translate a concept into an image. Keep your own definitions here — pick your own names, your own examples.
+
+| Mechanism | How it works | Example |
+|-----------|-------------|---------|
+|           |             |         |
+
+---
+
+## 6. Visual lineages / traditions you reference
+
+When you want a specific look, which schools or artists do you cite by name in prompts? A one-liner per lineage noting when it's the right tool.
+
+| Lineage / reference | When to reach for it |
+|--------------------|---------------------|
+|                    |                     |
+
+---
+
+## 7. Image lexicon (your recurring visual vocabulary)
+
+Subjects and compositions that reliably communicate specific concepts for you. Build this over time — by session six, you'll have repeats.
+
+| Subject / composition | Concept it carries |
+|----------------------|-------------------|
+|                      |                   |
+
+---
+
+## 8. Mood → palette / composition / texture
+
+If you work across multiple moods, keep a table so the agent doesn't re-derive it every time.
+
+| Mood | Palette | Composition | Texture |
+|------|---------|-------------|---------|
+|      |         |             |         |
+
+---
+
+## 9. Never do this
+
+Your refusals. Clichés you won't ship, defaults you want the agent to avoid, phrases you never want in a prompt.
+
+- _your first refusal here_
+- _your next refusal here_
+
+---
+
+## 10. Quality check (run before confirming a prompt)
+
+Write your own short checklist of questions. Three to five is the right number. Examples of the *kind* of question that works here:
+
+- Does the subject carry more than one meaning?
+- Could the same image illustrate ten different topics? (If yes, start over.)
+- Does it survive in black and white?
+- Would you be proud to print it?
+
+Replace with your own.
+
+---
+
+## 11. Prompt construction rules
+
+Structural rules for every prompt — things that should be in or out regardless of subject. Examples of the *kind* of rule that belongs here:
+
+- Whether text is ever baked into images (or always overlaid in HTML/CSS)
+- Whether hex codes are required for colour references
+- Default rendering style (photorealistic / illustrated / collage / etc.)
+- Required negative-prompt language (what to always exclude)
+
+Fill as you discover them.
 
 ---
 
