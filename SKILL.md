@@ -53,13 +53,19 @@ Lowercase, no spaces, underscores between elements, hyphens within. Versions alw
 
 ## Setup
 
-Requires `FAL_KEY` in your environment. Put it in your shell config (`~/.zshrc`, `~/.bashrc`, or a project `.env` sourced at startup):
+Requires `FAL_KEY` in the shell environment. How you store it is up to you — the skill only cares that `$FAL_KEY` resolves to a valid key at runtime.
 
-```bash
-export FAL_KEY="your-key-from-fal.ai-dashboard"
-```
+**For a new user**, walk them through the options in the README's *"Storing `FAL_KEY` — security tiers"* section. Default recommendation by OS:
 
-Optional: `XAI_API_KEY` for xAI/Grok Imagine — add the same way if you plan to use the xAI models covered below.
+- **macOS:** Tier 2 (Keychain) — `security add-generic-password -s fal.ai -a FAL_KEY -w '<key>' -U`, then `export FAL_KEY=$(security find-generic-password -s fal.ai -a FAL_KEY -w 2>/dev/null)` in `~/.zshrc`.
+- **Linux with libsecret:** Tier 2 (libsecret) — `echo -n '<key>' | secret-tool store --label='fal.ai' service fal.ai account FAL_KEY`, then `export FAL_KEY=$(secret-tool lookup service fal.ai account FAL_KEY 2>/dev/null)` in `~/.zshrc` / `~/.bashrc`.
+- **Any OS, quick start:** Tier 1 plain env var — `export FAL_KEY="..."` in the rc file. Less secure but zero setup. Flag the security trade-off honestly: plaintext on disk, inherited by every subshell.
+- **Multi-project dev:** Tier 3 (direnv + per-project `.env` with strict `.gitignore`).
+- **Team / enterprise:** Tier 4 (1Password CLI or similar vault).
+
+Offer the better tier first; fall back to simpler tiers only if the user declines or the platform doesn't support it.
+
+Optional: `XAI_API_KEY` for xAI/Grok Imagine — store the same way.
 
 ## Quick Start — Helper Scripts
 
