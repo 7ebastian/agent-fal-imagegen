@@ -42,13 +42,13 @@ In a Gemini CLI session:
 
 > Install agent-fal-imagegen: run `git clone --single-branch --depth 1 https://github.com/7ebastian/agent-fal-imagegen.git ~/.gemini/skills/fal-imagegen`. Help me add `export FAL_KEY="..."` to my shell config. Optionally set `XAI_API_KEY`. Then read `~/.gemini/skills/fal-imagegen/SKILL.md` and follow its instructions when I ask you to generate images, videos, or audio. Finally ask if I want to add a "fal-imagegen" section to `GEMINI.md` (or the project's equivalent) for teammate visibility.
 
-### Too-scared-to-paste-something-into-a-terminal mode (get ChatGPT to hand-hold you first)
+### Too-scared-to-paste-something-into-a-terminal mode (get a chat assistant to hand-hold you first)
 
-If you've never used an API key or a terminal, paste this into ChatGPT (or Claude.ai web) first:
+If you've never used an API key or a terminal, paste the prompt below into **Claude** ([claude.ai](https://claude.ai)) or **ChatGPT** ([chatgpt.com](https://chatgpt.com)) — either works. Any modern chat assistant will do, including Gemini, Grok, or Perplexity.
 
 > I want to install a coding-agent skill called **agent-fal-imagegen** that lets me generate images and videos by talking to my coding assistant (Claude Code, ChatGPT Codex, or Gemini CLI). Walk me through it like I've never used a terminal before. The GitHub URL is `https://github.com/7ebastian/agent-fal-imagegen`. I also need to sign up at fal.ai, load $10 of credits, generate an API key in the fal.ai dashboard, and save that key as an environment variable on my Mac/Windows machine. Please give me the exact steps, one at a time, and wait for me to confirm before moving to the next.
 
-Then paste the appropriate easy-mode block above into your agent once ChatGPT has you set up.
+Once the chat assistant has you set up (account created, key exported, terminal ready), paste the appropriate easy-mode block above into your coding agent.
 
 ---
 
