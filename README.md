@@ -172,9 +172,3 @@ Issues welcome for anything: API changes, broken auth, pricing surprises, script
 ## License
 
 Apache 2.0. See `LICENSE`.
-
----
-
-## Credit
-
-Originally built for the [Haavn' Fun](https://haavn.ai/fun) workshop on generative imagery and video. The Haavn-specific art-direction layer has been stripped for public release.
