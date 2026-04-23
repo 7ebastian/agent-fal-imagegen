@@ -1,11 +1,13 @@
 ---
-name: fal-ai
+name: fal-imagegen
 description: Use when generating images, videos, or audio via fal.ai API. Triggers on requests for AI image generation, text-to-video, image editing, upscaling, or any fal.ai model usage.
 ---
 
 # fal.ai Image & Video Generation
 
 Generate images, videos, and audio using fal.ai's 600+ model catalog.
+
+This skill is written for **any coding agent with bash + file tools** — Claude Code (auto-loads via the SKILL.md frontmatter above), ChatGPT Codex, Gemini CLI, Cursor agent, and similar. Non-Claude agents don't parse the frontmatter; they just read this file as Markdown instructions when pointed at it.
 
 **Companion skills (optional):** if you have your own brand / art-direction skill, read it before this one so creative direction is set. This skill handles the mechanics; a brand skill handles *what* to create.
 
@@ -28,8 +30,8 @@ For batch generation (multiple images), present the full list of prompts and get
 
 The user's context determines the right location:
 - **Working in a project** → save into the project (e.g., `./assets/`, `./generated/`, or a descriptive subfolder)
-- **Quick one-off generation** → save to `~/Downloads/fal-ai/`
-- **Building a collection** → create a named subfolder (e.g., `~/Downloads/fal-ai/brand-concepts/` or `./assets/hero-images/`)
+- **Quick one-off generation** → save to `~/Downloads/fal-imagegen/`
+- **Building a collection** → create a named subfolder (e.g., `~/Downloads/fal-imagegen/brand-concepts/` or `./assets/hero-images/`)
 
 Present the proposed path and confirm before generating. If generating multiple images in a session, establish the output directory once at the start — don't re-ask for every image unless the context changes.
 
@@ -64,15 +66,15 @@ Optional: `XAI_API_KEY` for xAI/Grok Imagine — add the same way if you plan to
 ### fal-generate.sh — Generate images/video
 ```bash
 # Image generation
-./dev/fal-ai/fal-generate.sh fal-ai/nano-banana-2 \
+./fal-generate.sh fal-ai/nano-banana-2 \
   '{"prompt":"A sunset over mountains","resolution":"1K"}' ./output
 
 # Image editing (requires public image_url)
-./dev/fal-ai/fal-generate.sh fal-ai/nano-banana-2/edit \
+./fal-generate.sh fal-ai/nano-banana-2/edit \
   '{"prompt":"Make it night time","image_url":"https://...","resolution":"1K"}' ./output
 
 # Video generation
-./dev/fal-ai/fal-generate.sh fal-ai/kling-video/v3/pro/text-to-video \
+./fal-generate.sh fal-ai/kling-video/v3/pro/text-to-video \
   '{"prompt":"A timelapse of clouds","duration":"5"}' ./output
 ```
 
@@ -81,11 +83,11 @@ Handles: submit to queue, poll status, download files, embed metadata into PNGs,
 ### fal-upload.sh — Upload local files to get public URLs
 ```bash
 # Upload a local file → returns public URL on stdout
-./dev/fal-ai/fal-upload.sh ./photo.jpg
+./fal-upload.sh ./photo.jpg
 # → https://v3b.fal.media/files/.../photo.jpg
 
 # Use in scripts — capture the URL
-URL=$(./dev/fal-ai/fal-upload.sh ./photo.jpg)
+URL=$(./fal-upload.sh ./photo.jpg)
 ```
 
 Uses 2-step signed URL flow (initiate → PUT) to preserve file extensions. Required for any model that needs `image_url` or `image_urls` input from local files.
@@ -517,7 +519,7 @@ Model: fal-ai/nano-banana-2
 Prompt: "<the full exact prompt>"
 Settings: 1K, 16:9, png
 File: 20260305_project_descriptor_v001.png
-Save to: ~/Downloads/fal-ai/
+Save to: ~/Downloads/fal-imagegen/
 Est. cost: $0.08
 ```
 
@@ -528,13 +530,13 @@ Draft prompt → show in full → user reviews/edits → confirm → generate.
 Remove backgrounds locally using BiRefNet via `rembg`. Free, no API calls, ~15s per image on M2 Max.
 
 ```bash
-source ./dev/fal-ai/.venv-rembg/bin/activate
-python3 ./dev/fal-ai/remove-bg.py <input-image> <output-png>
+source ./.venv-rembg/bin/activate
+python3 ./remove-bg.py <input-image> <output-png>
 ```
 
 Models (set in script): `birefnet-general` (default, all subjects) or `birefnet-portrait` (optimized for people). First run downloads ~970MB model weights to `~/.u2net/`.
 
-Venv: `./dev/fal-ai/.venv-rembg/` (rembg[cpu] + pillow + onnxruntime). The zip does not include the venv — recreate it with:
+Venv: `./.venv-rembg/` (rembg[cpu] + pillow + onnxruntime). Not included in the repo — recreate it with:
 
 ```bash
 python3 -m venv ./.venv-rembg
